@@ -37,8 +37,5 @@ namespace user_signup.Models {
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string Verify { get; set; }
-        
-        // using the annotations rids you of using half-baked solutions like this Error dictionary!
-//        public Dictionary<string, string> Errors { get; set; } = new Dictionary<string, string>();
     }
 }

@@ -25,8 +25,8 @@ namespace user_signup.Controllers {
         }
 
         // "localhost:5000/user/"
-        public IActionResult Index(User user) {
-            ViewContainer viewContainer = new ViewContainer(user);
+        public IActionResult Index() {
+            ViewContainer viewContainer = new ViewContainer();
             return View("Index", viewContainer);
         }
 
@@ -49,22 +49,18 @@ namespace user_signup.Controllers {
         public IActionResult Add(AddUserViewModel userViewModel) {
             // This line will check if the ModelState (with the model being the userViewModel that was bound to the route)
             // is invalid then return the Add view with the user
-            if (!ModelState.IsValid) return View("Add", userViewModel); 
-            // perform validation before creating user -> pass errors into userViewModel.Errors as necessary
-            User user = new User {
-                Username = userViewModel.Username,
-                Email = userViewModel.Email,
-                Password = userViewModel.Password
-            };
-                
-            ViewContainer viewContainer = new ViewContainer(user);
-                
-            if (!user.VerifyPassword(userViewModel.Verify)) {
-                userViewModel.Errors["verify"] = "Passwords do not match";
-                return View("Add", userViewModel);
-            }
+            if (!ModelState.IsValid) return View("Add", userViewModel);
 
-            return View("Index", viewContainer);
+            return View(
+                "Index",
+                new ViewContainer(
+                    new User {
+                        Username = userViewModel.Username,
+                        Email = userViewModel.Email,
+                        Password = userViewModel.Password
+                    }
+                )
+            );
 
         }
         

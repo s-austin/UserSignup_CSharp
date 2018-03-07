@@ -14,12 +14,16 @@
         Welcome @Model.User.Username!
     </p>
 }
+else {
+    <a asp-controller="User" asp-action="Add">Sign Up</a>
+}
+
 <div>
     <ul>
 @*        <!-- EXERCISE: wrap the username in a link <a> tag to have it link to a user page? -->*@
         @foreach (User user in Model.UserList) {
             <li>
-                @user.Username: @user.Email
+                <a href="/user/UserPage/@user.UserId">@user.Username</a>
             </li>
         }
     </ul>
