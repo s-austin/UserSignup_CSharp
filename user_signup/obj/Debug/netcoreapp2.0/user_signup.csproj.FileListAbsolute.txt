@@ -1,0 +1,10 @@
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/bin/Debug/netcoreapp2.0/user_signup.deps.json
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/bin/Debug/netcoreapp2.0/user_signup.runtimeconfig.json
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/bin/Debug/netcoreapp2.0/user_signup.runtimeconfig.dev.json
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/bin/Debug/netcoreapp2.0/user_signup.dll
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/bin/Debug/netcoreapp2.0/user_signup.pdb
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/obj/Debug/netcoreapp2.0/user_signup.csproj.CoreCompileInputs.cache
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/obj/Debug/netcoreapp2.0/user_signup.AssemblyInfoInputs.cache
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/obj/Debug/netcoreapp2.0/user_signup.AssemblyInfo.cs
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/obj/Debug/netcoreapp2.0/user_signup.dll
+/Users/vamp/Documents/Code/LaunchCode/unit3/user_signup/user_signup/obj/Debug/netcoreapp2.0/user_signup.pdb

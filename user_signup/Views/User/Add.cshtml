@@ -1,0 +1,56 @@
+﻿@using user_signup.Models
+
+@*  this line is not needed because the Models are already exposed to all views. How? check out the Views/_ViewImports.cshtml file! *@
+
+@*
+
+it is needed in the other file why? because i defined a ViewContainer class directly in the Controllers namespace
+because im a hacky fool who cant do things the right way :)
+
+hint: to solve this you have 2 choices
+1) move that class definition to the Models folder (user_signup.Models namespace) <--- bonus hint: do this one
+2) you can insist on doing things the hacky way by adding a @using directive to the Views/_ViewImports.cshtml file
+
+ *@
+@model AddUserViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    <!-- tag helpers supplied by the ASP engine lets us write more explicit code -->
+    @if (Model.Errors.Count != 0) {
+        <ul>
+            @foreach (KeyValuePair<string, string> error in Model.Errors) {
+                <li>
+                    @error.Value
+                </li>
+            }
+        </ul>
+    }
+    <form asp-controller="User" asp-action="Add" method="post">
+        <label asp-for="@Model.Username">Username: </label>
+        <input type="text" asp-for="@Model.Username" required/>
+        <span asp-validation-for="Username"></span>
+@*        these spans will only appear if the validation fails *@
+@*        they will display the error message that you defined in the AddUserViewModel class*@
+
+        <label asp-for="@Model.Email">Email: </label>
+        <input type="text" asp-for="@Model.Email"/>
+        <span asp-validation-for="Email"></span>
+
+        <label asp-for="@Model.Password">Password: </label>
+        <input type="password" asp-for="@Model.Password" required/>
+        <span asp-validation-for="Password"></span>
+
+        <label asp-for="@Model.Verify">Verify Password: </label>
+        <input type="password" asp-for="@Model.Verify" required/>
+        <span asp-validation-for="Verify"></span>
+
+        <input type="submit" value="Sign Up"/>
+    </form>
+</div>
+</body>
+</html>

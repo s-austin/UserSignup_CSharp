@@ -1,0 +1,28 @@
+﻿@using user_signup.Controllers
+@model UserController.ViewContainer
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+@*<!-- EXERCISE: add a link here to direct a user to the /Add route for signing up if a user doesnt exist --> *@
+@*side note: traditionally HTML files use <!-- --> syntax for defining a comment (ignored text). dotnet exposes the @ * approach instead!*@
+@if (Model.User.Username != null) {
+    <p>
+        Welcome @Model.User.Username!
+    </p>
+}
+<div>
+    <ul>
+@*        <!-- EXERCISE: wrap the username in a link <a> tag to have it link to a user page? -->*@
+        @foreach (User user in Model.UserList) {
+            <li>
+                @user.Username: @user.Email
+            </li>
+        }
+    </ul>
+</div>
+</body>
+</html>
