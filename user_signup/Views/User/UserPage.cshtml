@@ -5,14 +5,27 @@
 <html>
 <head>
     <title>Welcome @Model.Username</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div>
-    <ul>
-        <li>@Model.UserId</li>
-        <li>@Model.Username</li>
-        <li>@Model.Email</li>
-    </ul>
+    <table>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>@Model.UserId</td>
+            <td>@Model.Username</td>
+            <td>@Model.Email</td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

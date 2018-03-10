@@ -4,6 +4,7 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="user_signup" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -11,6 +12,9 @@
         <e p="Controllers" t="Include">
           <e p="HomeController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="UserDbContext.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="AddUserViewModel.cs" t="Include" />
