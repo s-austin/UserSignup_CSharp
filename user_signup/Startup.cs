@@ -4,19 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using user_signup.Data;
 
 namespace user_signup {
     public class Startup {
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
-
+ 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            services.AddDbContext<UserDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
 
@@ -26,7 +30,7 @@ namespace user_signup {
                 app.UseDeveloperExceptionPage();
             }
             else {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/User/Error");
             }
 
             app.UseStaticFiles();
@@ -34,7 +38,7 @@ namespace user_signup {
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=User}/{action=Index}/");
             });
         }
     }
