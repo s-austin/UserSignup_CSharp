@@ -2,10 +2,26 @@
 using Microsoft.AspNetCore.Mvc;
 using user_signup.Models;
 using System.Collections.Generic;
+ using System.Linq;
+ using SQLitePCL;
+ using user_signup.Data;
 
 namespace user_signup.Controllers {
     
     public class UserController : Controller {
+        // DbContext
+        private UserDbContext context;
+        
+        // provide a constructor that builds the controller with a context already set
+
+        public UserController(UserDbContext dbContext) {
+            context = dbContext;
+        }
+        
+        //---------
+        
+        
+        
         private static UserData Users = UserData.Instance; // get the UserData Singleton Instance
         
         public class ViewContainer {
@@ -18,7 +34,10 @@ namespace user_signup.Controllers {
             }
         }
         
-        public IActionResult Index() => View("Index", new ViewContainer());
+        public IActionResult Index() {
+//            List<User> Users = context.Users.ToList();
+            return View("Index", new ViewContainer());
+        }
 
         [Route("/user/userpage/{userId?}")]
         public IActionResult UserPage(int userId) => View(Users.GetUserById(userId));
@@ -36,7 +55,8 @@ namespace user_signup.Controllers {
                 Password = userViewModel.Password
             };
             
-            Users.AddUser(user);
+            context.Users.Add(user); // add to DbSet Users
+            context.SaveChanges(); // save the DB changes
                 
             var viewContainer = new ViewContainer(user);
 

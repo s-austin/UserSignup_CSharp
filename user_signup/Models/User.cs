@@ -55,19 +55,12 @@ namespace user_signup.Models {
                 password = value;
             }
         }
+        
+        // can also be named UserID [must be one of these 2 forms to be recognized by DbContext]
+        public int ID { get; set; }
 
         // public means of verifying a password (the password itself is never exposed)
         public bool VerifyPassword(string pass) => Password.Equals(pass);
-
-
-        // counter of all users that have been instantiated (prevents overlapping IDs)
-        // static so it is at the Class level (can be counted globally outside of all User instances)
-        private static int NextId = 0;
-
-        // can only be set internally (private setter)
-        // defaults to the CURRENT VALUE of NextId and THEN increments NextId for the next instantiation
-            // POSTfix increment (Variable++) opposed to PREfix increment (++Variable)
-        public int UserId { get; } = NextId++;
 
         // can only be set internally (private setter)
         // defaults to current DateTime in string format
